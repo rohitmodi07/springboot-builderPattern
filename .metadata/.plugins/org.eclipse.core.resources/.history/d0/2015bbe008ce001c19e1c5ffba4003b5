@@ -1,0 +1,44 @@
+package com.techmaze.techmaze.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.techmaze.techmaze.connector.BuilderPatternConnector;
+import com.techmaze.techmaze.model.BuilderPatternVO;
+import com.techmaze.techmaze.model.Country;
+
+@Service
+public class BuilderPatternService {
+	
+	private String COUNTRY_ORIGIN = "Others";
+	private BuilderPatternConnector builderPatternConnector;
+	
+	@Autowired
+	public BuilderPatternService(BuilderPatternConnector builderPatternConnector) {
+		this.builderPatternConnector = builderPatternConnector;
+	}
+	
+	public BuilderPatternVO getCountryNameBasedOnPersonName(String personName) throws Exception {
+		BuilderPatternVO builderPatternVO =  builderPatternConnector.getCountryNameBasedOnPersonName(personName);
+		
+		for (Country country : builderPatternVO.getCountry()) {
+			if("IN".equalsIgnoreCase(country.getCountry_id()) ) {
+				COUNTRY_ORIGIN = "INDIA";
+				break;
+			}else if("US".equalsIgnoreCase(country.getCountry_id())) {
+				COUNTRY_ORIGIN = "Unites States of America";
+				break;
+			}
+			
+		}
+		
+		builderPatternVO = builderPatternVO.builder().countryOrigin(COUNTRY_ORIGIN).build();
+		
+		System.out.println(" builder model ::::::: "+builderPatternVO);
+		
+		return builderPatternVO;
+	}
+
+}

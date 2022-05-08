@@ -1,0 +1,17 @@
+package com.techmaze.techmaze.model;
+
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ConditionalOnBean
+public class Country {
+
+	private String country_id;
+	private String probability;
+}

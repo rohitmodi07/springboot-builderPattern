@@ -1,0 +1,5 @@
+package com.techmaze.techmaze.model;
+
+public class BuilderPatternVO {
+
+}

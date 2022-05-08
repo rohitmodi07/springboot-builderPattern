@@ -1,0 +1,16 @@
+package com.techmaze.techmaze.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Builder
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Country {
+
+	private String country_id;
+	private String probability;
+}

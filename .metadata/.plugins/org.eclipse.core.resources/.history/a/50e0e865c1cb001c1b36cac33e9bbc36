@@ -1,0 +1,22 @@
+package com.techmaze.techmaze.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.techmaze.techmaze.connector.BuilderPatternConnector;
+
+@Service
+public class BuilderPatternService {
+	
+	private BuilderPatternConnector builderPatternConnector;
+	
+	@Autowired
+	public BuilderPatternService(BuilderPatternConnector builderPatternConnector) {
+		this.builderPatternConnector = builderPatternConnector;
+	}
+	
+	public String getCountryNameBasedOnPersonName(String personName) throws Exception {
+		return builderPatternConnector.getCountryNameBasedOnPersonName(personName);
+	}
+
+}

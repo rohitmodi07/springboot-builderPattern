@@ -1,0 +1,39 @@
+package com.techmaze.techmaze.model;
+
+import lombok.Builder;
+import lombok.Data;
+
+@Builder
+@Data
+public class BuilderPatternVO {
+	
+	private String name;
+	private Country[] country;
+
+}
+
+
+/*
+{
+  "name": "nathaniel",
+  "country": [
+    {
+      "country_id": "GH",
+      "probability": 0.3306489516462087
+    },
+    {
+      "country_id": "US",
+      "probability": 0.21465914776725203
+    },
+    {
+      "country_id": "PH",
+      "probability": 0.1657076043373859
+    }
+  ]
+}
+
+
+
+
+
+*/

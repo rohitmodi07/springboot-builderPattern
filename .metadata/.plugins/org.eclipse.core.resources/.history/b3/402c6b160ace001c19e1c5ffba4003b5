@@ -1,0 +1,21 @@
+package com.techmaze.techmaze.model;
+
+import java.math.BigDecimal;
+
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ConditionalOnBean
+@Builder(toBuilder = true)
+public class Country {
+
+	private String country_id;
+	private BigDecimal probability;
+}

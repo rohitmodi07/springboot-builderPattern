@@ -1,0 +1,38 @@
+package com.techmaze.techmaze.connector;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import com.techmaze.techmaze.model.BuilderPatternVO;
+
+@Component
+public class BuilderPatternConnector {
+
+	private RestTemplate restTemplate = new RestTemplate();
+	private String nationalityUrl;
+	private String backupUrl;
+	
+	@Autowired
+	public BuilderPatternConnector(String nationalityUrl, String backupUrl) {
+		this.nationalityUrl = nationalityUrl;
+		this.backupUrl = backupUrl;
+	}
+	
+	public BuilderPatternVO getCountryNameBasedOnPersonName(String personName) throws Exception {
+		
+		try {
+			
+		    String countryFinderUrl = UriComponentsBuilder.fromHttpUrl(nationalityUrl)
+		    		.queryParam("name", personName).build().toString();
+            System.out.println(" countryFinderUrl is  ::::: "+countryFinderUrl);
+            
+			return restTemplate.getForObject(countryFinderUrl, BuilderPatternVO.class);
+		} catch (RestClientException e) {
+			throw new RestClientException("Exception occurred while fetching nationality "+ e.getMessage());
+		}
+	}
+	
+}
