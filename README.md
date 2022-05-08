@@ -1,6 +1,5 @@
 # springboot-builderPattern
-Lombok Builder Pattern
-springboot-lombok-builder-demo
+SpringBoot Lombok Builder Pattern
 
 This spring boot project will give a glimpse about, how to implement and use a less explored but powerful feature of Builder pattern provided by Lombok library.
 
